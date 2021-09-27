@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="slim-mainpanel" style="position: relative;">
+    <div class="container">
+        <div class="slim-pageheader">
+            <ol class="breadcrumb slim-breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Catsdb</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+            <h6 class="slim-pagetitle">Home</h6>
+          </div>
+
+
+          <div class="section-wrapper p-3">
+            <label class="section-title">🔍 Basic Cat Filtering</label>
+            <div class="form-layout">
+              <div class="container">                
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-6"> <input class="form-control" type="text" [(ngModel)]="searchInput" 
+                    placeholder="By. Name / breeds"></div>
+                      <div class="col-lg-6"><input class="form-control" type="text" [(ngModel)]="searchInput2" 
+                    placeholder="By. Origin / Country"></div>
+                    </div>
+
+                </div>
+              </div>
+            </div><!-- form-layout -->
+          </div>
+          <div class="row row-sm">
+              <div *ngIf="(lists | filterBy: filterParams).length === 0" class="p-5">
+                <h3>😿 MIAWWW...NO RESULTS</h3>
+              </div>
+
+            <div class="card-columns mg-t-20">
+                <div class="card card-blog" *ngFor="let list of lists 
+                | filterBy: filterParams 
+                | paginate: { itemsPerPage: q , currentPage: p }"
+                                                    >
+                    <img class="img-fluid mh-100" src="{{ list.image?.url }}" alt="Image">
+                    <div class="card-body">
+                      <h5 class="blog-title"><a href="">🐱 {{ list?.name }}</a></h5>
+                      <p class="blog-text">{{ list?.description }}"</p>
+                      <p class="blog-category">🗺️ Origin: {{ list?.origin }}  <br> 
+                        🌱 Life Span: {{ list?.life_span }} years</p>
+                      
+                  </div>
+            </div>
+          </div>
+        </div>
+          <div class="section-wrapper">
+            <div class="row">
+              <pagination-controls (pageChange)="onPageChange(p = $event)"></pagination-controls>
+            </div>
+          </div>
+    </div>
+   </div>
+   <app-footer></app-footer>

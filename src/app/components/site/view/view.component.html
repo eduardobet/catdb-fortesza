@@ -1,0 +1,69 @@
+<app-header></app-header>
+
+<div class="slim-mainpanel" style="position: relative;">
+    <div class="container">
+        <div class="slim-pageheader">
+            <ol class="breadcrumb slim-breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Catsdb</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Profile</li>
+            </ol>
+            <h6 class="slim-pagetitle">Profile</h6>
+          </div>
+
+          <div class="row row-sm" *ngFor="let list of lists">
+            <div class="col-lg-8">
+              <div class="card card-profile" >
+                <div class="card-body">
+                  <div class="media">
+                    <img src="https://cdn2.thecatapi.com/images/{{ list.reference_image_id }}.jpg" alt="">
+                    <div class="media-body">
+                      <h3 class="card-profile-name">🐈 {{list.name}}</h3>
+                      <p>🗺️ Origin: {{ list?.origin }} |
+                        🌱 Life Span: {{ list?.life_span }} years <br>
+                     😺 Adaptability: {{ list.adaptability }} | 
+                        🤝 Friendly: {{list.stranger_friendly}} | 
+                        🧠 Intelligence: {{list.intelligence}} | 🧱 Weight: {{list.weight.imperial}} Lb
+
+                           </p>
+  
+                      <p class="mg-b-0"><b>About:</b> {{ list?.description }}</p> <br>
+                      <p class="mg-b-0"><b>Temperament:</b> {{ list?.temperament }}</p>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <a href="" class="card-profile-direct"></a>
+                  <div>
+                    <a href="{{list.wikipedia_url}}" target="_blank">Wikipedia</a>
+                    <a href="{{list.cfa_url}}" target="_blank">CFA Profile</a>
+                    <a href="{{list.vetstreet_url}}" target="_blank">Vetstreet Profile</a>
+                  </div>
+                </div>
+              </div>
+             
+              </div>
+            
+
+
+              <div class="col-lg-4 mg-t-20 mg-lg-t-0">
+                <div class="card card-connection">
+                  <div class="row row-xs">
+                    <div class="col-4 tx-primary">❤️ {{ list.affection_level }}</div>
+                    <div class="col-8">Affection Level</div>
+                  </div><!-- row -->
+                  <hr>
+                  <div class="row row-xs">
+                    <div class="col-4 tx-purple">🐶 {{list.dog_friendly}}</div>
+                    <div class="col-8">
+                      Dog Friendly Level
+                    </div>
+                  </div><!-- row -->
+                </div><!-- card -->
+                </div>
+
+
+
+    </div>
+    </div>
+<app-footer></app-footer>
